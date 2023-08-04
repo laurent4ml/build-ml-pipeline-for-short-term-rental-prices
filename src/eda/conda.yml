@@ -9,5 +9,7 @@ dependencies:
   - pip=20.3.3
   - pandas-profiling=2.11.0
   - pyarrow=2.0
+  - python=3.8
+  - numpy=1.19
   - pip:
       - wandb==0.10.31
