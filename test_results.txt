@@ -1,0 +1,15 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.8.17, pytest-6.2.2, py-1.11.0, pluggy-0.13.1 -- /Users/xxxxxxx/micromamba/envs/mlflow-5d52fdaf3478732bc5d25065adfa1ff715310208/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/xxxxxxx/Documents/5_TRAINING/6_UDACITY/2023_MLOPS/2_PROJECTS/short-term-rental-price/src/data_check
+collecting ... collected 6 items
+
+test_data.py::test_column_names PASSED                                   [ 16%]
+test_data.py::test_neighborhood_names PASSED                             [ 33%]
+test_data.py::test_proper_boundaries PASSED                              [ 50%]
+test_data.py::test_similar_neigh_distrib PASSED                          [ 66%]
+test_data.py::test_row_count PASSED                                      [ 83%]
+test_data.py::test_price_range PASSED                                    [100%]
+
+-- Docs: https://docs.pytest.org/en/stable/warnings.html
+======================= 6 passed, 101 warnings in 4.13s ========================
