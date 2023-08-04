@@ -1,5 +1,5 @@
 import json
-
+import logging
 import mlflow
 import tempfile
 import os
@@ -19,6 +19,8 @@ _steps = [
 #    "test_regression_model"
 ]
 
+logging.basicConfig(level=logging.INFO, format="%(asctime)-15s %(message)s")
+logger = logging.getLogger()
 
 # This automatically reads in the configuration
 @hydra.main(config_name='config')
@@ -97,12 +99,20 @@ def go(config: DictConfig):
                 json.dump(dict(config["modeling"]["random_forest"].items()), fp)  # DO NOT TOUCH
 
             # NOTE: use the rf_config we just created as the rf_config parameter for the train_random_forest
-            # step
-
-            ##################
-            # Implement here #
-            ##################
-
+            logger.info(f"modeling: {config['modeling']}")
+            _ = mlflow.run(
+                os.path.join(hydra.utils.get_original_cwd(), "src", "train_random_forest"),
+                "main",
+                parameters={
+                    "trainval_artifact": config['modeling']['input_artifact'], #"trainval_data.csv:latest"
+                    "val_size": config['modeling']['val_size'],
+                    "random_seed": config['modeling']['random_seed'],
+                    "stratify_by": config['modeling']['stratify_by'],
+                    "rf_config": rf_config,
+                    "max_tfidf_features": config['modeling']['max_tfidf_features'],
+                    "output_artifact": config['modeling']['output_artifact']
+                },
+            )
             pass
 
         if "test_regression_model" in active_steps:
