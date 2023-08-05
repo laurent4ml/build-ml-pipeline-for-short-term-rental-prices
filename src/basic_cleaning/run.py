@@ -33,7 +33,8 @@ def go(args):
     logger.info("Convert last_review to datetime")
     df['last_review'] = pd.to_datetime(df['last_review'])
 
-    idx = df['longitude'].between(-74.25, -73.50) & df['latitude'].between(40.5, 41.2)
+    idx = df['longitude'].between(-74.25, -
+                                  73.50) & df['latitude'].between(40.5, 41.2)
     df = df[idx].copy()
 
     logger.info("Save result to local file")
@@ -50,10 +51,10 @@ def go(args):
     logger.info("Logging artifact")
     run.log_artifact(artifact)
 
+
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description="This steps cleans the data")
-
 
     parser.add_argument(
         "--input_artifact",

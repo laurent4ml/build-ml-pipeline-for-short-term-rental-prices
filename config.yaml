@@ -1,7 +1,5 @@
 main:
   components_repository: "https://github.com/udacity/build-ml-pipeline-for-short-term-rental-prices#components"
-  # All the intermediate files will be copied to this directory at the end of the run.
-  # Set this to null if you are running in prod
   project_name: nyc_airbnb
   experiment_name: development
   steps: all
@@ -32,8 +30,6 @@ modeling:
   max_tfidf_features: 15
   input_artifact: "trainval_data.csv:latest"
   output_artifact: "random_forest_export"
-  # NOTE: you can put here any parameter that is accepted by the constructor of
-  # RandomForestRegressor. This is a subsample, but more could be added:
   random_forest:
     n_estimators: 100
     max_depth: 15
